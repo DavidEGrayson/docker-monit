@@ -1,0 +1,23 @@
+#!/bin/bash
+# Runs on the host system, reading mails files from a directory
+# and piping them to sendmail -t and then deleting them.
+
+CONTAINERS="rl_db bitcoind"
+DIR=/var/run/docker-monit/
+
+echo "`date`: Starting docker-monit"
+
+mkdir $DIR
+cd $DIR
+
+while :
+do
+  for name in $CONTAINERS
+  do
+    if [ x`docker inspect -f '{{.State.Running}}' $name 2>/dev/null` = xtrue ]
+    then
+      touch $name.alive
+    fi
+  done
+  sleep 10
+done

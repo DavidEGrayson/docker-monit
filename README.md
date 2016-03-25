@@ -1,7 +1,7 @@
 docker-monit: very simple daemon that helps you monitor docker containers
 by maintaining PID files for them.
 
-Create file /etc/defaults/docker-monit with contents:
+Create file /etc/default/docker-monit with contents:
 
 ```
 CONTAINERS="container1 container2 container3"

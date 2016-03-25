@@ -25,6 +25,20 @@ stop docker-monit
 sudo cat /var/log/upstart/docker-monit.log
 ```
 
+## Systemd users
+```
+cp docker-monit.service /etc/systemd/service
+
+/bin/systemctl enable docker-monit.service
+
+service start docker-monit
+
+service stop docker-monit
+
+sudo journalctl -f -u docker-monit.service
+```
+
+
 ## Monit users
 
 Create file /etc/monit/conf.d/docker-monit with contents:

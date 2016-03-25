@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker monit
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/sbin/start-stop-daemon --start --make-pidfile --pidfile /var/run/docker-monit.pid --exec /usr/local/bin/docker-monit
+ExecStop=/sbin/start-stop-daemon --stop --signal KILL -b -m --pidfile /var/run/docker-monit.pid --exec /usr/local/bin/docker-monit
+
+[Install]
+WantedBy=local.target

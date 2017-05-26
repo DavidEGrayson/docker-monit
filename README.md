@@ -27,13 +27,13 @@ sudo cat /var/log/upstart/docker-monit.log
 
 ## Systemd users
 ```
-cp docker-monit.service /etc/systemd/service
+cp docker-monit.service /etc/systemd/system
 
 /bin/systemctl enable docker-monit.service
 
-service start docker-monit
+service docker-monit start
 
-service stop docker-monit
+service docker-monit stop
 
 sudo journalctl -f -u docker-monit.service
 ```
